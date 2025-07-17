@@ -145,3 +145,26 @@
             once: true,    // Animar apenas uma vez
         });
     </script>
+
+
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efeito de brilho sutil no fundo do hero */
+        .hero-glow::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background-image: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0) 50%);
+            z-index: 0;
+            animation: pulse-glow 10s infinite ease-in-out;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+    </style>
