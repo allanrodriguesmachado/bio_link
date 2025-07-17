@@ -70,7 +70,7 @@
         <div class="container mx-auto px-6 text-center" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Quer turbinar sua bio?</h2>
             <p class="mb-6 text-green-100 text-lg">Comece hoje gratuitamente e transforme sua presença online!</p>
-            <a href="/cadastro"
+            <a href="{{route('login')}}"
                class="inline-block bg-white text-green-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-shadow shadow-md">
                 Criar Conta
             </a>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\auth\AuthRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -13,22 +15,22 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login()
+
+    public function auth(AuthRequest $request)
     {
-        $credentials = \request()->only([
-            'email', 'password'
-        ]);
+        $credentials = $request->only('email', 'password');
+        Log::info('Attempting login', $credentials);
 
         if (Auth::attempt($credentials)) {
-            \request()->session()->regenerate();
-            return to_route('dashboard');
+            $request->session()->regenerate();
+            Log::info('Login successful');
+            return to_route('welcome');
         }
 
-        return redirect('/login')->with([
-            'message' => 'Usuário e senha inválidos'
-        ]);
-
+        Log::warning('Login failed');
+        return redirect('/login')->with('message', 'Usuário e senha inválidos');
     }
+
 
     public function dashboard()
     {
