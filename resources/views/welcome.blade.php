@@ -1,4 +1,5 @@
-  <main>
+<x-layout>
+    <main>
         <!-- ===== Hero Section ===== -->
         <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
             <div class="hero-glow"></div>
@@ -36,7 +37,6 @@
                     <p class="text-slate-600 mt-3 text-lg">Tudo que você precisa para destacar sua bio e impressionar seu público.</p>
                 </div>
                 <!-- Features Grid -->
-                <!-- Use @foreach aqui no Laravel -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature 1: Link único -->
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-indigo-300 hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
@@ -49,7 +49,7 @@
                     <!-- Feature 2: Customização -->
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-indigo-300 hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
                         <div class="bg-indigo-100 text-indigo-600 w-14 h-14 flex items-center justify-center rounded-xl mb-5">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                         </div>
                         <h3 class="font-semibold text-2xl text-slate-900 mb-3">Customização Total</h3>
                         <p class="text-slate-600">Ajuste cores, fontes, layout e adicione thumbnails. Deixe a página com a sua cara e a cara da sua marca.</p>
@@ -71,7 +71,6 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-slate-900 mb-16" data-aos="fade-up">O que nossos criadores estão dizendo</h2>
                 <!-- Testimonials Grid -->
-                <!-- Use @foreach aqui no Laravel -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Testimonial 1 -->
                     <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
@@ -122,6 +121,7 @@
             </div>
         </section>
     </main>
+</x-layout>
 
     <!-- ===== Footer ===== -->
     <footer class="bg-slate-900 text-slate-400">

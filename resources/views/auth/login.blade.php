@@ -15,9 +15,9 @@
                 </div>
 
                 <!-- Formulário -->
-                <!-- Aponte a action para a rota de autenticação: {{ route('auth') }} -->
-                <form action="#" method="POST" class="space-y-6">
-                    @csrf <!-- Token CSRF do Laravel -->
+
+                <form action="{{route('auth')}}" method="POST" class="space-y-6">
+                    @csrf
 
                     <!-- Campo de E-mail -->
                     <div>
@@ -46,13 +46,12 @@
                          <a href="#" class="text-sm text-indigo-600 hover:underline mt-2 block text-right">Esqueceu a senha?</a>
                     </div>
 
-                    <!-- Alerta de Erro (se houver) -->
-                    <!-- Use a diretiva @if do Blade: @if (session('message')) -->
+
                     <div class="hidden text-red-700 dark:text-red-400 text-sm bg-red-100 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-500/30">
                         <!-- Mensagem de erro aqui: {{ session('message') }} -->
                         As credenciais fornecidas estão incorretas.
                     </div>
-                    <!-- Fim do @if -->
+
 
                     <!-- Botão de Login -->
                     <button type="submit"

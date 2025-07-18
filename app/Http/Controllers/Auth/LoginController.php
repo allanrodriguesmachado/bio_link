@@ -4,44 +4,33 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\auth\AuthRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(): object
     {
         return view('auth.login');
     }
 
-
-    public function auth(AuthRequest $request)
+    public function auth(AuthRequest $authRequest): RedirectResponse
     {
-        $credentials = $request->only('email', 'password');
-        Log::info('Attempting login', $credentials);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            Log::info('Login successful');
-            return to_route('welcome');
+        if ($authRequest->attempt()) {
+            return redirect()->intended('dashboard');
         }
 
-        Log::warning('Login failed');
-        return redirect('/login')->with('message', 'Usuário e senha inválidos');
+        return back()->with('message', 'Usuário e senha inválidos')->onlyInput('email');
     }
 
-
-    public function dashboard()
-    {
-        return view('dashboard');
-    }
-
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
+
         return redirect('/login');
     }
 }

@@ -34,21 +34,13 @@ class AuthRequest extends FormRequest
 
     public function attempt(): bool
     {
-        $credentials = $this->only([
-            'email', 'password'
-        ]);
+        $credentials = $this->only(['email', 'password']);
 
-        dd($credentials);
+        if (Auth::attempt($credentials)) {
+            $this->session()->regenerate();
+            return true;
+        }
 
-
-       if ($credentials) {
-           if (Auth::attempt($credentials)) {
-               $this->session()->regenerate();
-
-                return true;
-           }
-       }
-
-       return false;
+        return false;
     }
 }
