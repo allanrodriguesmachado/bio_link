@@ -14,7 +14,7 @@
                             Crie uma página de links impressionante em minutos. Centralize suas redes, destaque seus projetos e converta seguidores em clientes.
                         </p>
                         <!-- Substitua '#' pelo seu link de cadastro: #cadastro -->
-                        <a href="#cadastro" class="bg-indigo-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 transform hover:-translate-y-1">
+                        <a href="{{route('register')}}" class="bg-indigo-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 transform hover:-translate-y-1">
                             Começar agora (Grátis)
                         </a>
                     </div>
@@ -115,7 +115,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Pronto para turbinar sua bio?</h2>
                 <p class="mb-10 text-indigo-200 text-lg max-w-2xl mx-auto">Comece hoje gratuitamente e transforme sua presença online. Sem cartão de crédito, sem complicação.</p>
                 <!-- Substitua '#' pelo seu link de login: {{ route('login') }} -->
-                <a href="#" class="inline-block bg-white text-indigo-600 font-bold px-10 py-4 rounded-lg hover:bg-slate-100 transition-all duration-300 shadow-2xl transform hover:scale-105">
+                <a href="{{route('register')}}" class="inline-block bg-white text-indigo-600 font-bold px-10 py-4 rounded-lg hover:bg-slate-100 transition-all duration-300 shadow-2xl transform hover:scale-105">
                     Criar Minha Conta Grátis
                 </a>
             </div>
@@ -123,7 +123,7 @@
     </main>
 </x-layout>
 
-    <!-- ===== Footer ===== -->
+
     <footer class="bg-slate-900 text-slate-400">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -136,16 +136,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- AOS (Animate On Scroll) Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800, // Duração da animação
-            once: true,    // Animar apenas uma vez
-        });
-    </script>
-
 
   <style>
         body {
