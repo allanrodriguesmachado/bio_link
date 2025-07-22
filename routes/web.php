@@ -6,7 +6,13 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome'))->name('welcome');
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+Route::group([
+    'middleware' => ['auth']], function () {
+        Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    }
+);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/auth', [LoginController::class, 'auth'])->name('auth');

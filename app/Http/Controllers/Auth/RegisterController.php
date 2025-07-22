@@ -14,7 +14,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function save(Request $request): void
+    public function save(Request $request)
     {
         $register = new User();
         $register->name = $request->name;
@@ -23,5 +23,8 @@ class RegisterController extends Controller
         $register->email_verified_at = Carbon::now();
 
         $register->save();
+
+       return redirect()->intended('dashboard');
+
     }
 }
