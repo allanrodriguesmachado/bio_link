@@ -25,10 +25,6 @@ class LoginController extends Controller
 
     public function logout(): RedirectResponse
     {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
 
-        return redirect('/login');
     }
 }
