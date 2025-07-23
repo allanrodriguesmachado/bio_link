@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutControler;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LinksController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome'))->name('welcome');
@@ -18,3 +19,4 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/logout', LogoutControler::class)->name('logout')->middleware('auth');
 Route::get('/dashboard', DashboardController::class)->name('dashboard')->middleware('auth');
+Route::post('/link/store', [LinksController::class, 'store'])->name('store')->middleware('auth');

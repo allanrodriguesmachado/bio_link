@@ -9,4 +9,9 @@ class Links extends Model
 {
     /** @use HasFactory<\Database\Factories\LinksFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'url'
+    ];
 }

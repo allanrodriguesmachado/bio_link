@@ -29,7 +29,11 @@ class LinksController extends Controller
      */
     public function store(StoreLinksRequest $request)
     {
-        //
+        Links::query()->create(
+            $request->validated()
+        );
+
+        return redirect()->intended('dashboard');
     }
 
     /**
