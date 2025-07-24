@@ -29,8 +29,13 @@ class LinksController extends Controller
      */
     public function store(StoreLinksRequest $request)
     {
+
         Links::query()->create(
-            $request->validated()
+            array_merge(
+                $request->validated(),
+                ['user_id' => auth()->id()]
+            )
+//            $request->validated()
         );
 
         return redirect()->intended('dashboard');
