@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Links;
 use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function __invoke()
     {
+        $user = auth()->user();
+
+//        dd($links->all()->toArray());
+
 //        /**
 //         * @var User $user;
 //         */
@@ -16,6 +21,8 @@ class DashboardController extends Controller
 //
 //        dd(auth()->id());
 
-        return view('dashboard');
+        return view('dashboard', [
+            'links' => $user->links
+        ]);
     }
 }
