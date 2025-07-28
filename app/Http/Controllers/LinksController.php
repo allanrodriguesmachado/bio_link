@@ -52,17 +52,17 @@ class LinksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Links $links)
+    public function edit(Links $link)
     {
-        //
+        dd($link->toArray());
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLinksRequest $request, Links $links)
+    public function update(UpdateLinksRequest $request, Links $link)
     {
-        //
+        dd($link->toArray());
     }
 
     /**
