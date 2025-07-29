@@ -14,7 +14,6 @@
                 </button>
 
 
-                {{-- Dropdown de Usuário --}}
                 <div class="relative group">
                     <button
                         class="flex items-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-500 transition focus:outline-none">
@@ -195,30 +194,6 @@
                     </div>
                 </div>
 
-                <div id="edit-modal" tabindex="-1" aria-hidden="true"
-                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative p-4 w-full max-w-md max-h-full">
-                        <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
-                            <div
-                                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                    Criar Novo Link
-                                </h3>
-                                <button type="button"
-                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-toggle="edit-modal">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                         fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                    </svg>
-                                    <span class="sr-only">Fechar</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 @foreach($links AS $link)
                     <div
                         class="mt-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 mb-6">
@@ -237,7 +212,6 @@
 
                         <div
                             class="flex flex-wrap gap-3 items-center border-t border-slate-200 dark:border-slate-700 pt-4 mt-4">
-
                             <a href="{{route('edit', $link->id)}}"
                                class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"

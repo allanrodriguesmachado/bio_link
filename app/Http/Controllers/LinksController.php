@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLinksRequest;
 use App\Http\Requests\UpdateLinksRequest;
 use App\Models\Links;
+use Illuminate\Support\Facades\Auth;
 
 class LinksController extends Controller
 {
@@ -24,9 +25,6 @@ class LinksController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreLinksRequest $request)
     {
 
@@ -41,33 +39,26 @@ class LinksController extends Controller
         return redirect()->intended('dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Links $links)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Links $link)
     {
-        dd($link->toArray());
+        return view('link.edit', compact('link'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLinksRequest $request, Links $link)
     {
-        dd($link->toArray());
+        $data = $request->validated();
+        $data['user_id'] = Auth::id();
+
+        $link->update($data);
+
+        return redirect()->route('dashboard')->with('success', 'Link atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Links $links)
     {
         //
