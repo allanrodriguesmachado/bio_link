@@ -22,3 +22,4 @@ Route::get('/dashboard', DashboardController::class)->name('dashboard')->middlew
 Route::post('/link/store', [LinksController::class, 'store'])->name('store')->middleware('auth');
 Route::get('/link/{link}/edit', [LinksController::class, 'edit'])->name('edit')->middleware('auth');
 Route::put('/link/{link}', [LinksController::class, 'update'])->name('update')->middleware('auth');
+Route::delete('/link/{link}', [LinksController::class, 'destroy'])->name('destroy')->middleware('auth');

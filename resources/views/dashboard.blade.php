@@ -223,8 +223,7 @@
                             </a>
 
 
-                            {{-- Para exclusão, geralmente se usa um formulário com o método DELETE --}}
-                            <form action="#" method="POST"
+                            <form action="{{route('destroy', $link)}}" method="POST"
                                   onsubmit="return confirm('Tem certeza que deseja excluir?');">
                                 @csrf
                                 @method('DELETE')

@@ -52,15 +52,15 @@ class LinksController extends Controller
     public function update(UpdateLinksRequest $request, Links $link)
     {
         $data = $request->validated();
-        $data['user_id'] = Auth::id();
-
-        $link->update($data);
+        $link->fill($data)->save();
 
         return redirect()->route('dashboard')->with('success', 'Link atualizado com sucesso!');
     }
 
-    public function destroy(Links $links)
+    public function destroy(Links $link)
     {
-        //
+        $link->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Link removido com sucesso!');
     }
 }
