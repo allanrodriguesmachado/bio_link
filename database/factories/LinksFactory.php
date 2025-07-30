@@ -18,7 +18,6 @@ class LinksFactory extends Factory
      */
     public function definition(): array
     {
-        dd(User::factory());
         return [
             'name' => fake()->name(),
             'url' => fake()->url(),
