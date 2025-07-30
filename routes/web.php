@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutControler;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinksController;
@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/save', [RegisterController::class, 'save'])->name('save');
 });
 
-Route::get('/logout', LogoutControler::class)->name('logout')->middleware('auth');
+Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');
 Route::get('/dashboard', DashboardController::class)->name('dashboard')->middleware('auth');
 Route::post('/link/store', [LinksController::class, 'store'])->name('store')->middleware('auth');
 Route::get('/link/{link}/edit', [LinksController::class, 'edit'])->name('edit')->middleware('auth');

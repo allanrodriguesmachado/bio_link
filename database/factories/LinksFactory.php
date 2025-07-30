@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,11 @@ class LinksFactory extends Factory
      */
     public function definition(): array
     {
+        dd(User::factory());
         return [
-            //
+            'name' => fake()->name(),
+            'url' => fake()->url(),
+            'user_id' => User::factory(),
         ];
     }
 }
