@@ -9,22 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LinksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(StoreLinksRequest $request)
     {
 
@@ -33,15 +17,9 @@ class LinksController extends Controller
                 $request->validated(),
                 ['user_id' => auth()->id()]
             )
-//            $request->validated()
         );
 
         return redirect()->intended('dashboard');
-    }
-
-    public function show(Links $links)
-    {
-        //
     }
 
     public function edit(Links $link)
@@ -62,5 +40,21 @@ class LinksController extends Controller
         $link->delete();
 
         return redirect()->route('dashboard')->with('success', 'Link removido com sucesso!');
+    }
+
+    public function up(Links $link)
+    {
+        $newOrder = $link->order;
+        $swapWith = Links::query()->whereOrder($newOrder - 1)->first();
+        $link->order = $swapWith->order;
+        $link->save();
+
+        $swapWith->order = $newOrder;
+        $swapWith->save();
+    }
+
+    public function down(Links $link)
+    {
+        dd($link);
     }
 }

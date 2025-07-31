@@ -23,3 +23,5 @@ Route::post('/link/store', [LinksController::class, 'store'])->name('store')->mi
 Route::get('/link/{link}/edit', [LinksController::class, 'edit'])->name('edit')->middleware('auth');
 Route::put('/link/{link}', [LinksController::class, 'update'])->name('update')->middleware('auth');
 Route::delete('/link/{link}', [LinksController::class, 'destroy'])->name('destroy')->middleware('auth');
+Route::patch('/link/{link}/up', [LinksController::class, 'up'])->name('up')->middleware('auth');
+Route::patch('/link/{link}/down', [LinksController::class, 'down'])->name('down')->middleware('auth');

@@ -12,8 +12,10 @@ class LinksSeeder extends Seeder
 {
     public function run(): void
     {
-       User::all()->each(function ($user) {
-           Links::factory(10)->create(['user_id' => $user->id]);
-       });
+        User::all()->each(function ($user) {
+            Links::factory(10)->create(
+                ['user_id' => $user->id]
+            );
+        });
     }
 }
