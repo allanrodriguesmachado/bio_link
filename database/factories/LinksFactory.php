@@ -21,7 +21,7 @@ class LinksFactory extends Factory
         return [
             'name' => fake()->name(),
             'url' => fake()->url(),
-            'order' => $this->faker->numberBetween(1, 10),
+            'sort' => $this->faker->numberBetween(1, 10),
             'user_id' => User::factory(),
         ];
     }

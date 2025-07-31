@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLinksRequest;
 use App\Http\Requests\UpdateLinksRequest;
 use App\Models\Links;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LinksController extends Controller
@@ -44,13 +45,25 @@ class LinksController extends Controller
 
     public function up(Links $link)
     {
-        $newOrder = $link->order;
-        $swapWith = Links::query()->whereOrder($newOrder - 1)->first();
-        $link->order = $swapWith->order;
-        $link->save();
+        $order = $link->sort;
+        $newOrder = $order - 1;
 
-        $swapWith->order = $newOrder;
-        $swapWith->save();
+        /**
+         * @var User $user
+         */
+        $user = auth()->user();
+
+        $swapWith = $user->links();
+
+        $link->fill([
+            'sort' => $newOrder,
+        ])->save();
+
+        $swapWith->fill([
+            'sort' => $order,
+        ])->save();
+
+        return back();
     }
 
     public function down(Links $link)
