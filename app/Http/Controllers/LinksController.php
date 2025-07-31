@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use JetBrains\PhpStorm\NoReturn;
 use App\Http\Requests\{StoreLinksRequest, UpdateLinksRequest};
 use App\Models\{Links, User};
@@ -28,7 +30,6 @@ class LinksController extends Controller
 
     #[NoReturn] public function update(UpdateLinksRequest $request, Links $link)
     {
-//        dd($this->authorize('update', $link));
         if ($link->user()->is(Auth::user()) !== true) {
             return back()->with([
                 'url-alter' => 'Atenção: você não tem permissão para acessar este link.',
@@ -60,5 +61,12 @@ class LinksController extends Controller
         $link->moveDown();
 
         return back();
+    }
+
+    public function reorder(Links $link, Request $request)
+    {
+        $link->upAndDown($request);
+
+        return response()->json(['status' => 'success']);
     }
 }

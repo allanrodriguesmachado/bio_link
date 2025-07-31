@@ -25,5 +25,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{link}', [LinksController::class, 'destroy'])->name('destroy');
         Route::patch('/{link}/up', [LinksController::class, 'up'])->name('up');
         Route::patch('/{link}/down', [LinksController::class, 'down'])->name('down');
+        Route::post('/links/reorder', [LinksController::class, 'reorder'])->name('reorder');
     });
 });

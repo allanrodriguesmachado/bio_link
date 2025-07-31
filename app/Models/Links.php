@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -49,6 +50,15 @@ class Links extends Model
         $swapWith->fill([
             'sort' => $order,
         ])->save();
+    }
 
+    public function upAndDown(array|object $request): void
+    {
+        foreach ($request->ids as $index => $id) {
+            $this::query()
+                ->where('id', $id)
+                ->where('user_id', auth()->id())
+                ->update(['sort' => $index + 1]);
+        }
     }
 }
