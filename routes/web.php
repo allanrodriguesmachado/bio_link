@@ -17,6 +17,7 @@ Route::post('/logout', LogoutController::class)->name('logout')->middleware('aut
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('/profile', fn() => view('profile'))->name('profile');
 
     Route::prefix('link')->group(function () {
         Route::post('/store', [LinksController::class, 'store'])->name('store');

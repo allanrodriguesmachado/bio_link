@@ -8,14 +8,10 @@ import {sidebar} from "./menu/sidebar.js";
 
 window.$ = jQuery;
 
-reorder();
-darkAndLight()
-sidebar();
-
 function init() {
     reorder();
     darkAndLight()
     sidebar();
 }
 
-return init()
+init()
