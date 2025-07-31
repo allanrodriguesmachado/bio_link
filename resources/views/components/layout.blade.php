@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+<head data-theme="dark">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,14 @@
     @endif
 </head>
 <body >
-{{$slot}}
+
+
+<div className="bg-white dark:bg-black">
+    {{$slot}}
+
+</div>
+
+
 
 <script>
     if (
@@ -26,7 +33,6 @@
         document.documentElement.classList.remove('dark');
     }
 </script>
-
 
 </body>
 </html>

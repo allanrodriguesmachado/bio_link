@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use JetBrains\PhpStorm\NoReturn;
 use App\Http\Requests\{StoreLinksRequest, UpdateLinksRequest};
-use App\Models\{Links, User};
+use App\Models\{Links};
 
 class LinksController extends Controller
 {
