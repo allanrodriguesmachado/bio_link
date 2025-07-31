@@ -7,7 +7,6 @@
                 BioLinkPro
             </a>
 
-
             <div class="flex items-center space-x-4">
                 <button id="theme-toggle" type="button"
                         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -22,7 +21,6 @@
                             fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-
 
                 <div class="relative group">
                     <button
@@ -167,7 +165,7 @@
                                                placeholder="Meu link">
                                     </div>
 
-                                    @error('url')
+                                    @error('url-alter')
                                     <div
                                         class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                                         role="alert">
@@ -182,8 +180,6 @@
                                         {{$message}}.
                                     </div>
                                     @enderror
-
-
                                 </div>
 
                                 <div class="flex justify-end">
@@ -272,7 +268,7 @@
 
                             <a href="{{ $link->url }}" target="_blank"
                                class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 ml-auto">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                      viewBox="0 0 24 24"
                                      stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"

@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreLinksRequest;
-use App\Http\Requests\UpdateLinksRequest;
-use App\Models\Links;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use JetBrains\PhpStorm\NoReturn;
+use App\Http\Requests\{StoreLinksRequest, UpdateLinksRequest};
+use App\Models\{Links, User};
 
 class LinksController extends Controller
 {
     public function store(StoreLinksRequest $request)
     {
-
         Links::query()->create(
             array_merge(
                 $request->validated(),
@@ -28,8 +26,15 @@ class LinksController extends Controller
         return view('link.edit', compact('link'));
     }
 
-    public function update(UpdateLinksRequest $request, Links $link)
+    #[NoReturn] public function update(UpdateLinksRequest $request, Links $link)
     {
+//        dd($this->authorize('update', $link));
+        if ($link->user()->is(Auth::user()) !== true) {
+            return back()->with([
+                'url-alter' => 'Atenção: você não tem permissão para acessar este link.',
+            ]);
+        }
+
         $data = $request->validated();
         $link->fill($data)->save();
 
@@ -45,29 +50,15 @@ class LinksController extends Controller
 
     public function up(Links $link)
     {
-        $order = $link->sort;
-        $newOrder = $order - 1;
-
-        /**
-         * @var User $user
-         */
-        $user = auth()->user();
-
-        $swapWith = $user->links()->first();
-
-        $link->fill([
-            'sort' => $newOrder,
-        ])->save();
-
-        $swapWith->fill([
-            'sort' => $order,
-        ])->save();
+        $link->moveUp();
 
         return back();
     }
 
     public function down(Links $link)
     {
-        dd($link);
+        $link->moveDown();
+
+        return back();
     }
 }
