@@ -53,7 +53,7 @@ class LinksController extends Controller
          */
         $user = auth()->user();
 
-        $swapWith = $user->links();
+        $swapWith = $user->links()->first();
 
         $link->fill([
             'sort' => $newOrder,
