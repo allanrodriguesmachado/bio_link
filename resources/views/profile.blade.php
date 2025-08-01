@@ -5,9 +5,33 @@
 
         <div class="flex flex-1">
             <x-sidebar/>
+            <main class="flex-1 p-6 overflow-y-auto">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4 sm:mb-0">Perfil</h1>
+                </div>
 
+
+                <div>
+                    <form action="{{route('profile.update')}}" method="POST">
+                        @csrf
+                        @method('put')
+
+                        <div class="space-y-4">
+                            <div>
+                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>
+                                <input  type="text" name="handler" id="handler" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />
+                            </div>
+
+{{--                            <div>--}}
+{{--                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>--}}
+{{--                                <input value="{{old("name", auth()->user()->name)}}" type="text" name="name" id="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />--}}
+{{--                            </div>--}}
+                        </div>
+
+                        <button>Alterar</button>
+                    </form>
+                </div>
+            </main>
         </div>
     </div>
-
-
 </x-layout>

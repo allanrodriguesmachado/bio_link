@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{LoginController, LogoutController, RegisterController};
-use App\Http\Controllers\{DashboardController, LinksController};
+use App\Http\Controllers\{DashboardController, LinksController, ProfileController};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome'))->name('welcome');
@@ -17,7 +17,11 @@ Route::post('/logout', LogoutController::class)->name('logout')->middleware('aut
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
-    Route::get('/profile', fn() => view('profile'))->name('profile');
+
+    Route::prefix('profile')->group(function () {
+        Route::get('/', static fn() => view('profile'))->name('profile');
+        Route::put('/update', [ProfileController::class, 'update'])->name('profile.update');
+    });
 
     Route::prefix('link')->group(function () {
         Route::post('/store', [LinksController::class, 'store'])->name('store');
