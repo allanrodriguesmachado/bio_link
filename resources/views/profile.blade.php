@@ -13,7 +13,7 @@
                 </div>
 
 
-                <div>
+                <div class="max-w-4xl max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 md:p-8">
                     <form action="{{route('profile.update')}}" method="POST">
                         @csrf
                         @method('put')
@@ -37,22 +37,20 @@
 
 
                             <div>
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descricao</label>
                                 <input type="text" value="{{ Auth::user()->description }}" name="description" id=description"
                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Seu nome completo" />
                             </div>
 
-                            {{--                            <div>--}}
-                            {{--                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>--}}
-                            {{--                                <input value="{{old("name", auth()->user()->name)}}" type="text" name="name" id="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />--}}
-                            {{--                            </div>--}}
                         </div>
 
-                        <button type="submit"
-                                class="block mt-4 w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-slate-600">
-                            Alterar
-                        </button>
+                        <div class="mt-8 flex justify-end">
+                            <button type="submit"
+                                    class="inline-flex items-center justify-center px-6 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-slate-800 transition ease-in-out duration-150">
+                                Salvar
+                            </button>
+                        </div>
                     </form>
                 </div>
             </main>
