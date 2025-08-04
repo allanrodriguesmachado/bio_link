@@ -1,5 +1,7 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <x-layout>
-    <div class="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-950">
+    <div
+        class="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-950">
         <x-header/>
 
 
@@ -18,17 +20,39 @@
 
                         <div class="space-y-4">
                             <div>
-                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>
-                                <input  type="text" name="handler" id="handler" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />
+                                <label for="handler"
+                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cargo</label>
+                                <input type="text" name="handler" id="handler" value="{{ Auth::user()->handler }}"
+                                       class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="Seu nome completo"/>
                             </div>
 
-{{--                            <div>--}}
-{{--                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>--}}
-{{--                                <input value="{{old("name", auth()->user()->name)}}" type="text" name="name" id="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />--}}
-{{--                            </div>--}}
+
+                            <div>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                                <input type="text" value="{{ Auth::user()->name }}" name="name" id="name"
+                                       class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="Seu nome completo" />
+                            </div>
+
+
+                            <div>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                                <input type="text" value="{{ Auth::user()->description }}" name="description" id=description"
+                                       class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="Seu nome completo" />
+                            </div>
+
+                            {{--                            <div>--}}
+                            {{--                                <label for="handler" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seu Nome</label>--}}
+                            {{--                                <input value="{{old("name", auth()->user()->name)}}" type="text" name="name" id="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo"  />--}}
+                            {{--                            </div>--}}
                         </div>
 
-                        <button>Alterar</button>
+                        <button type="submit"
+                                class="block mt-4 w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-slate-600">
+                            Alterar
+                        </button>
                     </form>
                 </div>
             </main>
