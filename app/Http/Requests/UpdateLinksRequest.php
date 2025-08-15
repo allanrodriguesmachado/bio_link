@@ -23,7 +23,7 @@ class UpdateLinksRequest extends FormRequest
     {
         return [
             'url' => ['required', 'url'],
-            'name' => ['required', 'min:3'],
+            'name' => ['required', 'min:3', 'max:100'],
         ];
     }
 }

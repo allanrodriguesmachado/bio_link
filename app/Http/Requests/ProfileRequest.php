@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CheckProfile;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileRequest extends FormRequest

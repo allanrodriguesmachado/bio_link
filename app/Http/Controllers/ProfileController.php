@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
+use App\Rules\CheckProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,18 +19,15 @@ class ProfileController extends Controller
 
     public function update(ProfileRequest $request)
     {
-
         /**
-         * User @user
+         *   @var User $user
+         *
          */
         $user = Auth::user();
 
-
         $user->fill($request->validated())->save();
-//
-//        $user::query()->where('id', auth()->id())->update([
-//            'handler' => $request->handler,
-//        ]);
+
+//        $user->fill($request->validated())->save();
 
         return redirect()->route('profile')->with([
             'success' => 'Profile updated successfully',

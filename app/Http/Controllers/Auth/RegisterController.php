@@ -25,6 +25,5 @@ class RegisterController extends Controller
         $register->save();
 
        return redirect()->intended('dashboard');
-
     }
 }
