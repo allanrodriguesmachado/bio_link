@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Policies\LinkPolicy;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\NoReturn;
 use App\Http\Requests\{StoreLinksRequest, UpdateLinksRequest};
@@ -13,7 +14,7 @@ use App\Models\{Links};
 
 class LinksController extends Controller
 {
-    public function store(StoreLinksRequest $request)
+    public function store(StoreLinksRequest $request): RedirectResponse
     {
         Links::query()->create(
             array_merge(
@@ -28,7 +29,7 @@ class LinksController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function edit(Links $link): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory
+    public function edit(Links $link): View|Application|Factory
     {
         $this->authorize('update', $link);
 
@@ -49,14 +50,14 @@ class LinksController extends Controller
         return redirect()->route('dashboard')->with('success', 'Link atualizado com sucesso!');
     }
 
-    public function destroy(Links $link)
+    public function destroy(Links $link): RedirectResponse
     {
         $link->delete();
 
         return redirect()->route('dashboard')->with('success', 'Link removido com sucesso!');
     }
 
-    public function up(Links $link)
+    public function up(Links $link): RedirectResponse
     {
         $link->moveUp();
 
@@ -70,7 +71,7 @@ class LinksController extends Controller
         return back();
     }
 
-    public function reorder(Links $link, Request $request)
+    public function reorder(Links $link, Request $request): JsonResponse
     {
         $link->upAndDown($request);
 
