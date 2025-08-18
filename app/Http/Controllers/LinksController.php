@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Policies\LinkPolicy;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\NoReturn;
@@ -22,12 +25,17 @@ class LinksController extends Controller
         return redirect()->intended('dashboard');
     }
 
-    public function edit(Links $link)
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit(Links $link): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory
     {
+        $this->authorize('update', $link);
+
         return view('link.edit', compact('link'));
     }
 
-    #[NoReturn] public function update(UpdateLinksRequest $request, Links $link)
+    #[NoReturn] public function update(UpdateLinksRequest $request, Links $link): RedirectResponse
     {
         if ($link->user()->is(Auth::user()) !== true) {
             return back()->with([
@@ -55,7 +63,7 @@ class LinksController extends Controller
         return back();
     }
 
-    public function down(Links $link)
+    public function down(Links $link): RedirectResponse
     {
         $link->moveDown();
 
