@@ -14,9 +14,13 @@
 
 
                 <div class="max-w-4xl max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 md:p-8">
-                    <form action="{{route('profile.update')}}" method="POST">
+                    <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+
+                        <div>
+                            <input type="file" id="photo" name="photo">
+                        </div>
 
                         <div class="space-y-4">
                             <div>

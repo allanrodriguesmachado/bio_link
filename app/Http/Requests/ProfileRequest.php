@@ -4,7 +4,11 @@ namespace App\Http\Requests;
 
 use App\Rules\CheckProfile;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
+/**
+ * @var UploadedFile $photo;
+ */
 class ProfileRequest extends FormRequest
 {
     /**
@@ -24,7 +28,8 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'handler' => ['required'],
+            'handler' => ['required', new CheckProfile],
+            'photo' => ['nullable', 'image'],
             'description' => ['required'],
         ];
     }
