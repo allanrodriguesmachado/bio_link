@@ -24,10 +24,14 @@ class ProfileController extends Controller
          */
         $user = Auth::user();
 
-        $file = $request->photo;
-        $file->store('photos');
+        $data = $request->validated();
 
-        $user->fill($request->validated())->save();
+        if($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $data['photo'] = $path;
+        }
+
+        $user->fill($data)->save();
 
         return redirect()->route('profile')->with([
             'success' => 'Profile updated successfully',

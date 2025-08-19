@@ -31,7 +31,7 @@ class LinksController extends Controller
      */
     public function edit(Links $link): View|Application|Factory
     {
-        $this->authorize('update', $link);
+//        $this->authorize('update', $link);
 
         return view('link.edit', compact('link'));
     }
