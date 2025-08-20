@@ -18,7 +18,7 @@ class BioLinkController extends Controller
 
         return view('bio_link', [
             'user' => $user,
-            'link' => $links,
+            'links' => $links,
         ]);
     }
 }
