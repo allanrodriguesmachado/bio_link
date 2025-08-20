@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{LoginController, LogoutController, RegisterController};
-use App\Http\Controllers\{DashboardController, LinksController, ProfileController};
+use App\Http\Controllers\{BioLinkController, DashboardController, LinksController, ProfileController};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome'))->name('welcome');
@@ -33,3 +33,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/links/reorder', [LinksController::class, 'reorder'])->name('reorder');
     });
 });
+
+
+Route::get('/{user:handler}', BioLinkController::class);
